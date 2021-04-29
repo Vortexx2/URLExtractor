@@ -83,7 +83,7 @@ Window to adv- all except 6 7 27
 12/12/2019, 10:38 - Janmey: <Media omitted>
 30/01/2020, 17:02 - Janmey: <Media omitted>
 10/02/2020, 22:32 - Janmey: <Media omitted>
-10/02/2020, 22:32 - Janmey: <Media omitted>
+10/02/2020, 22:32 - Janmey: http://example.com https://something.com
 26/10/2020, 21:48 - Janmey: https://t.me/joinchat/SDtcqlMc-35aaF0F5K-2yg
 05/11/2020, 11:37 - Janmey: https://docs.google.com/spreadsheets/d/18Q2GC5imLMB4gfy9iPnR0GqyAbREkFbdOwXpB6tiiOs/edit?usp=drivesdk
 06/11/2020, 16:18 - Janmey: https://drive.google.com/folderview?id=1w2uoaFDuxOuiQj3tQ5r8eNiRR0slJmga
