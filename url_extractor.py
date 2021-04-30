@@ -102,6 +102,10 @@ class URLExtractor:
         :param app_to_csv: bool to determine whether to append the links or not
         :return: None
         """
+
+        if not os.path.exists(self.dest_path):
+            os.makedirs(self.dest_path)
+
         last_dt = self.last_date_of_previous()
 
         with open(os.path.join(self.dest_path, self.dest_file), 'a' if app_to_csv else 'w', newline='') as file:
