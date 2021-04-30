@@ -3,7 +3,7 @@ import csv
 from bs4 import BeautifulSoup
 import requests
 from datetime import datetime
-from utils import datetime_from_line
+from utils import utilities
 
 
 class AnnotateLinks:
@@ -32,7 +32,7 @@ class AnnotateLinks:
                         break
 
                     try:
-                        last_datetime = datetime_from_line.datetime_from_line(line, from_csv=True)
+                        last_datetime = utilities.datetime_from_line(line, from_csv=True)
 
                     except Exception as err:
                         print(type(err), err)
@@ -57,7 +57,7 @@ class AnnotateLinks:
             writer = csv.writer(file)
 
             if not app_to_csv:
-                writer.writerow(['date', 'time', 'url', 'title', 'meta-tags'])
+                writer.writerow(['date', 'time', 'url', 'title', 'meta_tags'])
 
             with open(os.path.join(self.filepath, self.filename), 'r') as file2:
                 csv_reader = csv.DictReader(file2, delimiter=',')
@@ -65,23 +65,23 @@ class AnnotateLinks:
                 for row in csv_reader:
                     try:
 
+                        current_dt = utilities.datetime_from_line(row['date'] + ',' + row['time'] + ',', from_csv=True)
+
+                        if current_dt <= last_dt:
+                            continue
+
                         described_dict = self.annotate_link(row['url'])
-                        # row.append(described_dict['title'].strip())
                         row['title'] = described_dict['title'].strip()
                         row['meta'] = described_dict['meta']
 
                         writer.writerow([row[key] for key in row])
                     except Exception as err:
                         print(err)
+                        row['title'] = 'PDF'
 
                         if row['url'][-4:] == '.pdf':
-                            writer.writerow(['PDF'])
+                            writer.writerow(row[key] for key in row)
 
 
-# URL = 'https://vsitzmann.github.io/siren/'
-# page = requests.get(URL)
-# soup = BeautifulSoup(page.content, 'lxml')
-# print(soup.title.string)
-
-annotate = AnnotateLinks('extracted_links.csv', 'final_result.csv')
-annotate.write_to_csv()
+# annotate = AnnotateLinks('extracted_links.csv', 'final_result.csv')
+# annotate.write_to_csv()

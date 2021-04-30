@@ -2,7 +2,7 @@ from datetime import datetime
 import re
 import os
 import csv
-from utils import datetime_from_line
+from utils import utilities
 
 
 class URLExtractor:
@@ -42,7 +42,7 @@ class URLExtractor:
                         break
 
                     try:
-                        last_datetime = datetime_from_line.datetime_from_line(line, from_csv=True)
+                        last_datetime = utilities.datetime_from_line(line, from_csv=True)
 
                     except Exception as err:
                         print(type(err), err)
@@ -76,7 +76,7 @@ class URLExtractor:
 
                 try:
 
-                    date_and_time = datetime_from_line.datetime_from_line(line)
+                    date_and_time = utilities.datetime_from_line(line)
                     last_d_t = date_and_time
 
                     if len(urls) == 0:
@@ -119,5 +119,5 @@ class URLExtractor:
 
 
 # extractor = URLExtractor(filename='WhatsApp Chat with meta_resources ∈ M68.txt', dest_file='extracted_links.csv')
-extractor = URLExtractor(filename='test.txt', dest_file='extracted_links.csv')
-extractor.write_to_csv()
+# extractor = URLExtractor(filename='test.txt', dest_file='extracted_links.csv')
+# extractor.write_to_csv()

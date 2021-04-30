@@ -22,3 +22,4 @@ def datetime_from_line(line: str, from_csv: bool = False) -> datetime:
 
     else:
         return datetime.strptime(date_and_time, "%d/%m/%Y,%H:%M,")
+
